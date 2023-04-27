@@ -43,6 +43,7 @@ func NewServer(config util.Config, store *db.Store) (*Server, error) {
 func (server *Server) setupRouter() {
 	router := gin.Default()
 
+	//login函数Call在server上，所以login函数里面用到的参量，都要和Server有关联
 	router.POST("/users", server.createUser)
 	router.POST("/users/login", server.loginUser)
 
