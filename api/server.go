@@ -46,6 +46,7 @@ func (server *Server) setupRouter() {
 	//login函数Call在server上，所以login函数里面用到的参量，都要和Server有关联
 	router.POST("/users", server.createUser)
 	router.POST("/users/login", server.loginUser)
+	router.POST("/tokens/renew_access", server.renewAccessToken)
 
 	authRoutes := router.Group("/").Use(authMiddleware(server.tokenMaker))
 	authRoutes.POST("/accounts", server.createAccount)
